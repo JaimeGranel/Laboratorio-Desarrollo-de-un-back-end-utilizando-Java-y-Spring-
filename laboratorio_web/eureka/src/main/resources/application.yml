@@ -1,7 +1,7 @@
 server:
   port: ${PORT:8761}
 
-  ## Eureka Serverver Configuration
+## Eureka Server Configuration
 eureka:
   client:
     registerWithEureka: false
