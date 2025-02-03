@@ -17,7 +17,7 @@ public class LibroDto {
     private String descripcion;
     private Double precio;
     private String isbn;
-    private int valoracion;
+    private Integer valoracion;
     private String categoria;
     private String editorial;
     private Boolean visible;

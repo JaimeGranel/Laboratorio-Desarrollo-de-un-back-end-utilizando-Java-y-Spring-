@@ -16,14 +16,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="libros")
+@Table(name="books")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @ToString
-public class Libro
+public class Book
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +47,7 @@ public class Libro
     @Column(name = Consts.ISBN)
     private String isbn;
     @Column(name = Consts.VALORACION)
-    private int valoracion;
+    private Integer valoracion;
 
     @Column(name = Consts.CATEGORIA)
     private String categoria;

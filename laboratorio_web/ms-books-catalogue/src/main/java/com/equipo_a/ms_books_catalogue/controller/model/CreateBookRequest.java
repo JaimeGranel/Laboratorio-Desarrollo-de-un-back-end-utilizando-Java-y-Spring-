@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateLibroRequest {
+public class CreateBookRequest {
 
     private String titulo;
     private String autor;
@@ -17,7 +17,7 @@ public class CreateLibroRequest {
     private String descripcion;
     private Double precio;
     private String isbn;
-    private int valoracion;
+    private Integer valoracion;
     private String categoria;
     private String editorial;
     private Boolean visible;

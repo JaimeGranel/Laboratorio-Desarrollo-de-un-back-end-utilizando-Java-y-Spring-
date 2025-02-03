@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class SearchCriteria<Libro> implements Specification<Libro> {
+public class SearchCriteria<Book> implements Specification<Book> {
     private final List<SearchStatement> list = new LinkedList<>();
 
     public void addSearchStatement(SearchStatement criteria) {
@@ -18,7 +18,7 @@ public class SearchCriteria<Libro> implements Specification<Libro> {
     }
 
     @Override
-    public Predicate toPredicate(Root<Libro> root, CriteriaQuery<?> query, CriteriaBuilder builder){
+    public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder builder){
         List<Predicate> predicates = new LinkedList<>();
         for (SearchStatement criteria : list) {
             if (criteria.getOperation().equals(SearchOperation.GREATER_THAN)) {

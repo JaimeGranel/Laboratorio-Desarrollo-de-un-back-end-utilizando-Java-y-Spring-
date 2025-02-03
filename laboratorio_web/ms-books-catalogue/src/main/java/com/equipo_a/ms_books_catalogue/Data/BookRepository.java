@@ -1,6 +1,6 @@
 package com.equipo_a.ms_books_catalogue.Data;
 
-import com.equipo_a.ms_books_catalogue.Data.Model.Libro;
+import com.equipo_a.ms_books_catalogue.Data.Model.Book;
 import com.equipo_a.ms_books_catalogue.Data.Utility.SearchCriteria;
 import com.equipo_a.ms_books_catalogue.Data.Utility.SearchStatement;
 import com.equipo_a.ms_books_catalogue.Data.Utility.SearchOperation;
@@ -14,24 +14,24 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class LibroRepository {
+public class BookRepository {
 
-    private final LibroJpaRepository repository;
+    private final BookJpaRepository repository;
 
-    public List<Libro> getLibros() {
+    public List<Book> getBooks() {
         return repository.findAll();
     }
 
-    public Libro getById(Long id) {
+    public Book getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
-    public Libro save(Libro libro) { return repository.save(libro);}
+    public Book save(Book book) { return repository.save(book);}
 
-    public void delete(Libro libro) { repository.delete(libro);}
+    public void delete(Book book) { repository.delete(book);}
 
-    public List<Libro> search(String titulo, String autor, String fecha,String descripcion,Double precio ,String isbn, int valoracion,String categoria, String editorial, Boolean visible) {
-        SearchCriteria<Libro> spec = new SearchCriteria<>();
+    public List<Book> search(String titulo, String autor, String fecha, String descripcion, Double precio , String isbn, Integer valoracion, String categoria, String editorial, Boolean visible) {
+        SearchCriteria<Book> spec = new SearchCriteria<>();
 
         if (StringUtils.isNotBlank(titulo)) {
             spec.addSearchStatement(new SearchStatement(Consts.TITULO, titulo, SearchOperation.MATCH));
@@ -55,7 +55,7 @@ public class LibroRepository {
         if(StringUtils.isNotBlank(isbn)){
             spec.addSearchStatement(new SearchStatement(Consts.ISBN, isbn, SearchOperation.EQUAL));
         }
-        if(valoracion!=0){
+        if(valoracion!=null){
             spec.addSearchStatement(new SearchStatement(Consts.VALORACION, valoracion, SearchOperation.EQUAL));
         }
         if(StringUtils.isNotBlank(categoria)){

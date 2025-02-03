@@ -1,8 +1,8 @@
 package com.equipo_a.ms_books_catalogue.servicios;
 
-import com.equipo_a.ms_books_catalogue.Data.LibroRepository;
-import com.equipo_a.ms_books_catalogue.Data.Model.Libro;
-import com.equipo_a.ms_books_catalogue.controller.model.CreateLibroRequest;
+import com.equipo_a.ms_books_catalogue.Data.BookRepository;
+import com.equipo_a.ms_books_catalogue.Data.Model.Book;
+import com.equipo_a.ms_books_catalogue.controller.model.CreateBookRequest;
 import com.equipo_a.ms_books_catalogue.controller.model.LibroDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -19,36 +19,36 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class LibrosServicelmpl implements LibrosService {
+public class BookServicelmpl implements BookService {
 
 
-    private final LibroRepository repositori;
+    private final BookRepository repository;
 
     private final ObjectMapper mapper;
 
     @Override
-    public List<Libro> getLibros(String titulo, String autor, String fecha, String descripcion, Double precio, String isbn, int valoracion, String categoria, String editorial, Boolean visible) {
+    public List<Book> getBooks(String titulo, String autor, String fecha, String descripcion, Double precio, String isbn, Integer valoracion, String categoria, String editorial, Boolean visible) {
         if(StringUtils.hasLength(titulo) || StringUtils.hasLength(autor) || StringUtils.hasLength(fecha) ||
                 StringUtils.hasLength(descripcion) || precio != null || StringUtils.hasLength(isbn) ||
-                valoracion > 0 || StringUtils.hasLength(categoria) || StringUtils.hasLength(editorial) || visible != null){
-            return repositori.search(titulo,autor,fecha,descripcion,precio,isbn,valoracion,categoria,editorial,visible);
+                valoracion !=null || StringUtils.hasLength(categoria) || StringUtils.hasLength(editorial) || visible != null){
+            return repository.search(titulo,autor,fecha,descripcion,precio,isbn,valoracion,categoria,editorial,visible);
         }
-        List<Libro> libros = repositori.getLibros();
-        return libros.isEmpty() ? null : libros;
+        List<Book> books = repository.getBooks();
+        return books.isEmpty() ? null : books;
     }
 
     @Override
-    public Libro getLibro(String id) {
-        return repositori.getById(Long.valueOf(id));
+    public Book getBook(String id) {
+        return repository.getById(Long.valueOf(id));
     }
 
     @Override
-    public Boolean removeLibro(String id) {
+    public Boolean removeBook(String id) {
 
-        Libro product = repositori.getById(Long.valueOf(id));
+        Book product = repository.getById(Long.valueOf(id));
 
         if (product != null) {
-            repositori.delete(product);
+            repository.delete(product);
             return Boolean.TRUE;
         } else {
             return Boolean.FALSE;
@@ -56,20 +56,20 @@ public class LibrosServicelmpl implements LibrosService {
     }
 
     @Override
-    public Libro addLibro(CreateLibroRequest request) {
+    public Book addBook(CreateBookRequest request) {
         if (request != null && StringUtils.hasLength(request.getTitulo().trim())
                 && StringUtils.hasLength(request.getAutor().trim())
                 && StringUtils.hasLength(request.getFecha().trim())
                 && StringUtils.hasLength(request.getDescripcion().trim())
                 && request.getPrecio() != null
                 && StringUtils.hasLength(request.getIsbn().trim())
-                && request.getValoracion() >= 0
+                && request.getValoracion() !=null
                 && StringUtils.hasLength(request.getCategoria().trim())
                 && StringUtils.hasLength(request.getEditorial().trim())
                 && request.getVisible() != null) {
 
 
-            Libro libro = Libro.builder()
+            Book book = Book.builder()
                     .titulo(request.getTitulo())
                     .autor(request.getAutor())
                     .fecha(request.getFecha())
@@ -83,33 +83,33 @@ public class LibrosServicelmpl implements LibrosService {
                     .build();
 
 
-            return repositori.save(libro);
+            return repository.save(book);
         } else {
             return null;
         }
     }
 
     @Override
-    public Libro updateLibro(String id, LibroDto updateRequest) {
-        Libro libro = repositori.getById(Long.valueOf(id));
-        if (libro != null) {
-            libro.update(updateRequest);
-            repositori.save(libro);
-            return libro;
+    public Book updateBook(String id, LibroDto updateRequest) {
+        Book book = repository.getById(Long.valueOf(id));
+        if (book != null) {
+            book.update(updateRequest);
+            repository.save(book);
+            return book;
         } else {
             return null;
         }
     }
 
     @Override
-    public Libro updateLibro(String id, String updateRequestString) {
-        Libro libro = repositori.getById(Long.valueOf(id));
-        if (libro != null) {
+    public Book updateBook(String id, String updateRequestString) {
+        Book book = repository.getById(Long.valueOf(id));
+        if (book != null) {
             try {
                 JsonMergePatch jsonMergePatch = JsonMergePatch.fromJson(mapper.readTree(updateRequestString));
-                JsonNode target = jsonMergePatch.apply(mapper.readTree(mapper.writeValueAsString(libro)));
-                Libro patched = mapper.treeToValue(target, Libro.class);
-                repositori.save(patched);
+                JsonNode target = jsonMergePatch.apply(mapper.readTree(mapper.writeValueAsString(book)));
+                Book patched = mapper.treeToValue(target, Book.class);
+                repository.save(patched);
                 return patched;
             } catch (JsonProcessingException | JsonPatchException e) {
                 return null;
