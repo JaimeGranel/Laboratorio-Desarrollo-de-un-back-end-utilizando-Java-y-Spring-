@@ -1,4 +1,4 @@
-INSERT INTO LIBRO (TITULO, AUTOR, FECHA, DESCRIPCION, PRECIO, ISBN, VALORACION, CATEGORIA, EDITORIAL, VISIBLE)
+INSERT INTO LIBROS (TITULO, AUTOR, FECHA, DESCRIPCION, PRECIO, ISBN, VALORACION, CATEGORIA, EDITORIAL, VISIBLE)
 VALUES
     ('El Quijote', 'Miguel de Cervantes', '1605-01-01', 'Novela clásica', 15.99, '978-3-16-148410-0', 5, 'Clásico', 'Anaya', true),
     ('Cien Años de Soledad', 'Gabriel García Márquez', '1967-06-05', 'Realismo mágico', 20.00, '978-1-56619-909-4', 5, 'Realismo Mágico', 'Sudamericana', true),

@@ -31,11 +31,11 @@ public class LibroController {
             @RequestParam (required = false) String descripcion,
             @RequestParam (required = false) Double precio,
             @RequestParam (required = false) String isbn,
-            @RequestParam (required = false) Integer valoracion,
+            @RequestParam (required = false) int valoracion,
             @RequestParam (required = false) String categoria,
             @RequestParam (required = false) String editorial,
-            @RequestParam (required = false) Boolean visible
-            ){
+            @RequestParam (required = false) Boolean visible){
+        log.info("headers: {}", headers);
         List<Libro> libros = service.getLibros(titulo,autor,fecha,descripcion,precio,isbn,valoracion,categoria,editorial,visible);
         if(libros != null){
             return ResponseEntity.ok(libros);

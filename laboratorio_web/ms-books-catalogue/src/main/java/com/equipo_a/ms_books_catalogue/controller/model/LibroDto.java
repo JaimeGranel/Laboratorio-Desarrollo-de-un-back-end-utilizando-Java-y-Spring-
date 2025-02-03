@@ -21,5 +21,4 @@ public class LibroDto {
     private String categoria;
     private String editorial;
     private Boolean visible;
-
 }
