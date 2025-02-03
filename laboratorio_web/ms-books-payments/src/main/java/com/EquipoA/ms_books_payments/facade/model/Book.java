@@ -14,11 +14,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Book {
-    // TODO based on model provided by jaime
-    private Long id;
-    private String title;
-    private String author;
-    private String description;
-    private Double price;
+    private long id;
+    private String titulo;
+    private String autor;
+    private String fecha;
+    private String descripcion;
+    private Double precio;
+    private String isbn;
+    private int valoracion;
+    private String categoria;
+    private String editorial;
     private Boolean visible;
 }

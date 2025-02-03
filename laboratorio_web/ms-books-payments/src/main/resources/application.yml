@@ -19,7 +19,7 @@ spring:
     name: ms-books-payments
   datasource:
     # TODO
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:holaquetal;Mode=MySQL
   jpa:
     show-sql: true
   h2:
