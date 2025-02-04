@@ -1,6 +1,6 @@
 package com.equipo_a.ms_books_catalogue.Data.Model;
 
-import com.equipo_a.ms_books_catalogue.controller.model.LibroDto;
+import com.equipo_a.ms_books_catalogue.controller.model.BookDto;
 import com.equipo_a.ms_books_catalogue.Data.Utility.Consts;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -58,18 +58,18 @@ public class Book
     @Column(name = Consts.VISIBLE)
     private Boolean visible;
 
-    public  void  update(LibroDto libroDto){
+    public  void  update(BookDto bookDto){
 
-        this.titulo = libroDto.getTitulo();
-        this.autor = libroDto.getAutor();
-        this.fecha = libroDto.getFecha();
-        this.descripcion = libroDto.getDescripcion();
-        this.precio = libroDto.getPrecio();
-        this.isbn = libroDto.getIsbn();
-        this.valoracion = libroDto.getValoracion();
-        this.categoria = libroDto.getCategoria();
-        this.editorial = libroDto.getEditorial();
-        this.visible = libroDto.getVisible();
+        this.titulo = bookDto.getTitulo();
+        this.autor = bookDto.getAutor();
+        this.fecha = bookDto.getFecha();
+        this.descripcion = bookDto.getDescripcion();
+        this.precio = bookDto.getPrecio();
+        this.isbn = bookDto.getIsbn();
+        this.valoracion = bookDto.getValoracion();
+        this.categoria = bookDto.getCategoria();
+        this.editorial = bookDto.getEditorial();
+        this.visible = bookDto.getVisible();
     }
 
 }

@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class LibroDto {
+public class BookDto {
 
     private String titulo;
     private String autor;

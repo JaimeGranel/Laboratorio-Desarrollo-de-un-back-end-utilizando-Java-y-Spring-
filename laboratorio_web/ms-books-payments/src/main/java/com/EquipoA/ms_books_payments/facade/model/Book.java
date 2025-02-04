@@ -14,14 +14,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Book {
-    private long id;
+    private Long id;
     private String titulo;
     private String autor;
     private String fecha;
     private String descripcion;
     private Double precio;
     private String isbn;
-    private int valoracion;
+    private Integer valoracion;
     private String categoria;
     private String editorial;
     private Boolean visible;

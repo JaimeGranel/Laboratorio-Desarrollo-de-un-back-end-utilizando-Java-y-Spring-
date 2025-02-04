@@ -24,7 +24,7 @@ public class PaymentsController {
     @PostMapping("/payments")
     public ResponseEntity<Payment> createPayment(@RequestBody @Valid PaymentRequest request) {
 
-        //log.info("Creating payment...");
+        log.info("Creating payment...");
         Payment created = service.createPayment(request);
 
         if (created == null) { return ResponseEntity.badRequest().build(); }
@@ -40,7 +40,7 @@ public class PaymentsController {
         else { return ResponseEntity.ok(payments); }
     }
 
-    @GetMapping("/orders/{id}")
+    @GetMapping("/payments/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable String id) {
 
         Payment payment = service.getPaymentById(id);

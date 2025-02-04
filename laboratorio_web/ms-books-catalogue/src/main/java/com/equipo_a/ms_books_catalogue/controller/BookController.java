@@ -2,7 +2,7 @@ package com.equipo_a.ms_books_catalogue.controller;
 
 import com.equipo_a.ms_books_catalogue.Data.Model.Book;
 import com.equipo_a.ms_books_catalogue.controller.model.CreateBookRequest;
-import com.equipo_a.ms_books_catalogue.controller.model.LibroDto;
+import com.equipo_a.ms_books_catalogue.controller.model.BookDto;
 import com.equipo_a.ms_books_catalogue.servicios.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class BookController {
     private final BookService service;
 
     @GetMapping("/books")
-    public ResponseEntity<List<Book>> getLibros(
+    public ResponseEntity<List<Book>> getBooks(
             @RequestHeader Map<String, String> headers,
             @RequestParam (required = false) String titulo,
             @RequestParam (required = false) String autor,
@@ -43,18 +43,18 @@ public class BookController {
             return ResponseEntity.ok(Collections.emptyList());
         }
     }
-    @GetMapping("/books/{libroId}")
-    public ResponseEntity<Book> getLibro(@PathVariable String libroId){
-        Book book = service.getBook(libroId);
+    @GetMapping("/books/{bookId}")
+    public ResponseEntity<Book> getBook(@PathVariable String bookId){
+        Book book = service.getBook(bookId);
         if(book != null){
             return ResponseEntity.ok(book);
         }else{
             return ResponseEntity.notFound().build();
         }
     }
-    @DeleteMapping("/books/{libroId}")
-    public ResponseEntity<Book> deleteLibro(@PathVariable String libroId){
-        boolean deleted = service.removeBook(libroId);
+    @DeleteMapping("/books/{bookId}")
+    public ResponseEntity<Book> deleteBook(@PathVariable String bookId){
+        boolean deleted = service.removeBook(bookId);
 
         if(Boolean.TRUE.equals(deleted)){
             return ResponseEntity.ok().build();
@@ -72,9 +72,9 @@ public class BookController {
             return ResponseEntity.badRequest().build();
         }
     }
-    @PatchMapping("/books/{librosId}")
-    public ResponseEntity<Book> updateBook(@PathVariable String librosId, @RequestBody String updateRequestString){
-        Book book = service.updateBook(librosId, updateRequestString);
+    @PatchMapping("/books/{booksId}")
+    public ResponseEntity<Book> updateBook(@PathVariable String booksId, @RequestBody String updateRequestString){
+        Book book = service.updateBook(booksId, updateRequestString);
         if(book != null){
             return ResponseEntity.ok(book);
         }else{
@@ -83,7 +83,7 @@ public class BookController {
     }
 
     @PutMapping("/books/{booksId}")
-    public ResponseEntity<Book> updateBook(@PathVariable String booksId, @RequestBody LibroDto request){
+    public ResponseEntity<Book> updateBook(@PathVariable String booksId, @RequestBody BookDto request){
         Book book = service.updateBook(booksId, request);
         if(book != null){
             return ResponseEntity.ok(book);

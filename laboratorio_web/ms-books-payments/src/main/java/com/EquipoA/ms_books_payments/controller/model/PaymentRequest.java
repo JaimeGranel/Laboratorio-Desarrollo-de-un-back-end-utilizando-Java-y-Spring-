@@ -15,6 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class PaymentRequest {
     @NotNull(message = "`books` cannot be null")
-    @NotEmpty(message = "`books` cannot be epmty")
+    @NotEmpty(message = "`books` cannot be empty")
     private List<String> books;
 }

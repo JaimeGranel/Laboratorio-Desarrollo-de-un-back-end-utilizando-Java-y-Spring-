@@ -3,7 +3,7 @@ package com.equipo_a.ms_books_catalogue.servicios;
 import com.equipo_a.ms_books_catalogue.Data.BookRepository;
 import com.equipo_a.ms_books_catalogue.Data.Model.Book;
 import com.equipo_a.ms_books_catalogue.controller.model.CreateBookRequest;
-import com.equipo_a.ms_books_catalogue.controller.model.LibroDto;
+import com.equipo_a.ms_books_catalogue.controller.model.BookDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -90,7 +90,7 @@ public class BookServicelmpl implements BookService {
     }
 
     @Override
-    public Book updateBook(String id, LibroDto updateRequest) {
+    public Book updateBook(String id, BookDto updateRequest) {
         Book book = repository.getById(Long.valueOf(id));
         if (book != null) {
             book.update(updateRequest);

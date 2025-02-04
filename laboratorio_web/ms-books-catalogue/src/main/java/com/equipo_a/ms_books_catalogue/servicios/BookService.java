@@ -2,7 +2,7 @@ package com.equipo_a.ms_books_catalogue.servicios;
 
 import com.equipo_a.ms_books_catalogue.Data.Model.Book;
 import com.equipo_a.ms_books_catalogue.controller.model.CreateBookRequest;
-import com.equipo_a.ms_books_catalogue.controller.model.LibroDto;
+import com.equipo_a.ms_books_catalogue.controller.model.BookDto;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface BookService {
     Book getBook(String id);
     Boolean removeBook(String id);
     Book addBook(CreateBookRequest request);
-    Book updateBook(String id, LibroDto updateRequest);
+    Book updateBook(String id, BookDto updateRequest);
     Book updateBook(String id, String updateRequestString);
 
 }
