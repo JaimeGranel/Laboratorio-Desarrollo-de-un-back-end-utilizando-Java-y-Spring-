@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "c8f01e43-1550-4fe3-b316-f03adb4c3ad1",
+		"_postman_id": "4d3250e4-a821-49fd-a1a6-efcdaf33701b",
 		"name": "Project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "41658941"
+		"_exporter_id": "41656861"
 	},
 	"item": [
 		{
@@ -13,7 +13,10 @@
 					"name": "GetPayments",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -21,7 +24,10 @@
 					"name": "createPayment",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -29,7 +35,10 @@
 					"name": "GetPaymentById",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -105,15 +114,173 @@
 					"name": "GetBooks",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBooks especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/books/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBooks con filtro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/books?visible=true&valoracion=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "visible",
+									"value": "true"
+								},
+								{
+									"key": "valoracion",
+									"value": "4"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateBook",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"El Quijote 2\",\r\n    \"autor\": \"Miguel del camino\",\r\n    \"fecha\": \"2012-01-01\",\r\n    \"descripcion\": \"Novela clásica\",\r\n    \"precio\": 215.99,\r\n    \"isbn\": \"978-3-16-11230-0\",\r\n    \"valoracion\": 1,\r\n    \"categoria\": \"Clásico\",\r\n    \"editorial\": \"Anaya\",\r\n    \"visible\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/books/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewBook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"titulo\": \"Mortadelo y Filemon\",\r\n        \"autor\": \"Ibañez\",\r\n        \"fecha\": \"2000-9-9\",\r\n        \"descripcion\": \"Perfeccion\",\r\n        \"precio\": 18.5,\r\n        \"isbn\": \"978-0-121-28423-4\",\r\n        \"valoracion\": 5,\r\n        \"categoria\": \"Arte\",\r\n        \"editorial\": \"España\",\r\n        \"visible\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBook",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/books/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PartialUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"precio\": 18.5,\r\n    \"isbn\": \"978-0-121-28423-4\",\r\n    \"editorial\": \"Sudamericana\",\r\n    \"visible\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/books/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"books",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
